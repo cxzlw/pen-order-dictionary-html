@@ -274,8 +274,8 @@
             var butPage=document.getElementById("page");
             butPage.innerHTML="";
             if (page!=0&&page+1<=pageNum){
-                butPage.appendChild(nBut);
                 butPage.appendChild(aBut);
+                butPage.appendChild(nBut);
             } else if(page==0){
                 butPage.appendChild(nBut);
             }else if(page+1>pageNum){

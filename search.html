@@ -252,7 +252,6 @@
     <script>
         function setBut(){
             var NowPage=document.createElement("span");
-            NowPage.innerHTML=page+"/"+pageNum;
             var aBut=document.createElement("button");
             aBut.id="pageUd";
             aBut.onclick=function (){
@@ -275,6 +274,7 @@
             nBut.innerHTML="下一页";
             var butPage=document.getElementById("page");
             butPage.innerHTML="";
+            NowPage.innerHTML=page+"/"+pageNum;
             if (page!=0&&page+1<=pageNum){
                 butPage.appendChild(aBut);
                 butPage.appendChild(NowPage);

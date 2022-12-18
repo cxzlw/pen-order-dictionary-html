@@ -273,7 +273,7 @@
             nBut.innerHTML="下一页";
             var butPage=document.getElementById("page");
             butPage.innerHTML="";
-            if (!page==0&!page+1>pageNum){
+            if (page!=0&&page+1<=pageNum){
                 butPage.appendChild(nBut);
                 butPage.appendChild(aBut);
             } else if(page==0){

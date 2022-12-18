@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>笔顺码查询-搜索</title>
+    <link rel="stylesheet" href="./static/style.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
+    <script src="./static/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        form{
+            display: inline;
+        }
+        /* 设置搜索框 */
+        form.example input[type=text] {
+            float: right;
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            width:30%;
+            background: #f1f1f1;
+        }
+
+        /* 设置提交按钮 */
+        form.example button {
+            float: right;
+            width: 10%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none; /* 防止双边框 */
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        /* 清除浮动 */
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
+</head>
+<body>
+<div id="navBar">
+    <span>笔顺码字典</span>
+    <span id="dir">
+            加载目录中......
+    </span>
+    <script>
+        var changeDir = document.getElementById("dir");
+        $.get("/static/directory.html",function(data){
+            changeDir.innerHTML=data;
+        });
+    </script>
+    <form class="example" action="/search.html">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        <input type="text" placeholder="搜索汉字" name="search">
+    </form>
+</div>
+<div id="middle">
+    <div id="mbox">
+            <span id="title">
+
+            </span>
+        <span id="words">
+
+            </span>
+    </div>
+</div>
+<div id="down">
+    <span>By Zengtudor Web</span>
+</div>
+</body>
+</html>

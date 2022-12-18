@@ -250,26 +250,50 @@
 </div>
 <div id="page">
     <script>
+        function setBut(){
+            var aBut=document.createElement("button");
+            aBut.id="pageUd";
+            aBut.onclick="afterPage()";
+            aBut.innerHTML="上一页";
+            var nBut=document.createElement("button");
+            nBut.id="pageUd";
+            nBut.onclick="nextPage()";
+            nBut.innerHTML="下一页";
+            var butPage=document.getElementById("page");
+            butPage.innerHTML="";
+            if (!page==0&!page+1>pageNum){
+                butPage.appendChild(nBut);
+                butPage.appendChild(aBut);
+            } else if(page==0){
+                butPage.appendChild(nBut);
+            }else if(page+1>pageNum){
+                butPage.appendChild(aBut);
+            }
+        }
         function afterPage(){
             if(page-1>=0){
                 page--;
             }
-            flushAnser()
+            setBut();
+            flushAnser();
         }
         function nextPage(){
             if(!(page+1>pageNum)){
                 page++;
             }
-            flushAnser()
+            setBut();
+            flushAnser();
         }
     </script>
     <button id="pageUd" onclick="afterPage()">
-        上一页
+        加载中
     </button>
     <button id="pageUd" onclick="nextPage()">
-        下一页
+        加载中
     </button>
-
+    <script>
+        setBut();
+    </script>
 </div>
 <div id="down">
     <span id="powered">加载powered中</span>

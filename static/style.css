@@ -3,7 +3,7 @@
     margin: 0;
 }
 #navBar{
-    background-color: cornflowerblue;
+    background-color: #b40a0a;
     width: 100%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -31,7 +31,7 @@
 #middle{
     width: 100%;
     height: 1920px;
-    background-color: rgb(255, 252, 247);
+    background-color: rgba(211, 140, 27, 0.38);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,9 +42,19 @@
     background-color: white;
 }
 #middle #mbox #title{
+    width: 100%;
+    text-align: center;
     float: left;
     font-size: 50px;
     margin-bottom: 40px;
+}
+#middle #mbox #title img{
+    margin-top: 7px;
+}
+#middle #mbox #title #search{
+    width: 70%;
+    height: 30px;
+    border:10px;
 }
 #middle #mbox #words{
     clear: both;

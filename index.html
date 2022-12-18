@@ -6,16 +6,57 @@
     <link rel="stylesheet" href="static/style.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
     <script src="static/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* 设置搜索框 */
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 17px;
+            border: 1px solid grey;
+            float: left;
+            width: 80%;
+            background: #f1f1f1;
+        }
+
+        /* 设置提交按钮 */
+        form.example button {
+            float: left;
+            width: 20%;
+            padding: 10px;
+            background: #2196F3;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none; /* 防止双边框 */
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        /* 清除浮动 */
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+    </style>
 </head>
 <body>
 <div id="navBar">
-    <span>Zengtudor</span>
+    <span>笔顺码字典</span>
     <span id="dir">
             加载目录中......
         </span>
     <script>
         var changeDir = document.getElementById("dir");
-        $.get("http://"+severMainUrl+"/static/directory.html",function(data){
+        $.get("/static/directory.html",function(data){
             changeDir.innerHTML=data;
         });
     </script>
@@ -24,7 +65,11 @@
 <div id="middle">
     <div id="mbox">
             <span id="title">
-                Hello world!
+                <img src="/pv/qqazk.png" alt="title" srcset="" width="97%">
+                <form class="example" action="/">
+                    <input type="text" placeholder="搜索汉字" name="search">
+                     <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </span>
         <span id="words">
                 This is my first web page.

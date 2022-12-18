@@ -216,6 +216,12 @@
                     const data=Rawdata.data;
                     const mbox = document.getElementById("mbox");
                     mbox.innerHTML="";
+                    if(pageNum==0){
+                        var NotFound=document.createElement("h1");
+                        NotFound.innerHTML="没有找到相关内容！";
+                        mbox.appendChild(NotFound);
+                        return;
+                    }
                     for(let i=0;i<data.length;i++){
                         let anser=document.createElement("div");
                         anser.id="anser";

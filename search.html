@@ -251,6 +251,8 @@
 <div id="page">
     <script>
         function setBut(){
+            var NowPage=document.createElement("span");
+            NowPage.innerHTML=page+"/"+pageNum;
             var aBut=document.createElement("button");
             aBut.id="pageUd";
             aBut.onclick=function (){
@@ -275,11 +277,14 @@
             butPage.innerHTML="";
             if (page!=0&&page+1<=pageNum){
                 butPage.appendChild(aBut);
+                butPage.appendChild(NowPage);
                 butPage.appendChild(nBut);
             } else if(page==0){
+                butPage.appendChild(NowPage);
                 butPage.appendChild(nBut);
             }else if(page+1>pageNum){
                 butPage.appendChild(aBut);
+                butPage.appendChild(NowPage);
             }
         }
     </script>

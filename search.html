@@ -81,14 +81,15 @@
         }
         #middle{
             width: 100%;
-            height: 1920px;
+            /*height: 1920px;*/
             background-color: rgba(211, 140, 27, 0.38);
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 30px;
         }
         #middle #mbox{
-            height: 1900px;
+            /*height: 1900px;*/
             width: 95%;
             background-color: white;
         }
@@ -113,8 +114,8 @@
         }
         #middle #mbox #anser{
             float: left;
-            background-color: #b40a0a;
-            color: #b40a0a;
+            /*background-color: #b40a0a;*/
+            /*color: #b40a0a;*/
             width: 500px;
             height: 200px;
             margin-left: auto;
@@ -145,6 +146,9 @@
             padding-left: 20px;
             width: calc(100% - 160px);
         }
+        #middle #mbox #anser #hz{
+            overflow: hidden;
+        }
         #middle #mbox #anser #bsm{
             height: calc(25px);
         }
@@ -153,6 +157,7 @@
         }
         #middle #mbox #anser #js{
             height: calc(150px);
+            overflow: auto;
         }
         #down{
             text-align: center;
@@ -160,7 +165,13 @@
         #down span{
             padding: 5px;
         }
-
+        #page{
+            text-align: center;
+        }
+        #page #pageUd{
+            background-color: #b40a0a;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -184,19 +195,81 @@
     <div id="mbox">
             <div id="anser">
                 <span id="word">
-                    <a href="/word.html?id=1">吴</a>
+                    <a href="/word.html?id=1">加</a>
                 </span>
                 <ul>
-                    <li id="bsm">笔顺码：aaaaaa</li>
-                    <li id="py">拼音：wu</li>
-                    <li id="js">解释：12345</li>
+                    <li id="bsm">笔顺码：加载中</li>
+                    <li id="py">拼音：加载中</li>
+                    <li id="js">解释：加载中</li>
                 </ul>
             </div>
 
         <script>
-            $_GET["search"];
+            var page=0;
+            var pageNum=0;
+            function flushAnser(){
+                $.get("http://localhost:8080/search/bsm",{"search":$_GET["search"],"page":page},(Rawdata)=>{
+                    // console.log(Rawdata);
+                    Rawdata=JSON.parse(Rawdata);
+                    pageNum=Rawdata.page;
+                    // console.log(Rawdata.page);
+                    const data=Rawdata.data;
+                    const mbox = document.getElementById("mbox");
+                    mbox.innerHTML="";
+                    for(let i=0;i<data.length;i++){
+                        let anser=document.createElement("div");
+                        anser.id="anser";
+                        let a=document.createElement("a");
+                        a.innerHTML=data[i].hz[0];
+                        let word = document.createElement("span");
+                        word.id="word";
+                        word.appendChild(a);
+                        let ul=document.createElement("ul");
+                        let bsm=document.createElement("li");
+                        bsm.id="bsm";
+                        bsm.innerHTML="汉字笔顺码："+data[i].bsm;
+                        let py=document.createElement("li");
+                        py.id="py";
+                        py.innerHTML="汉字拼音："+data[i].py;
+                        let js=document.createElement("li");
+                        js.id="js";
+                        js.innerHTML="汉字解释："+data[i].js;
+                        ul.appendChild(bsm);
+                        ul.appendChild(py);
+                        ul.appendChild(js);
+                        anser.appendChild(word);
+                        anser.appendChild(ul);
+                        mbox.appendChild(anser);
+                    }
+                });
+                scroll(0,0);
+            }
+            flushAnser()
         </script>
     </div>
+</div>
+<div id="page">
+    <script>
+        function afterPage(){
+            if(page-1>=0){
+                page--;
+            }
+            flushAnser()
+        }
+        function nextPage(){
+            if(!(page+1>pageNum)){
+                page++;
+            }
+            flushAnser()
+        }
+    </script>
+    <button id="pageUd" onclick="afterPage()">
+        上一页
+    </button>
+    <button id="pageUd" onclick="nextPage()">
+        下一页
+    </button>
+
 </div>
 <div id="down">
     <span id="powered">加载powered中</span>

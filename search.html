@@ -253,11 +253,23 @@
         function setBut(){
             var aBut=document.createElement("button");
             aBut.id="pageUd";
-            aBut.onclick=afterPage();
+            aBut.onclick=function (){
+                if(page-1>=0){
+                    page--;
+                }
+                setBut();
+                flushAnser();
+            };
             aBut.innerHTML="上一页";
             var nBut=document.createElement("button");
             nBut.id="pageUd";
-            nBut.onclick=nextPage();
+            nBut.onclick=function (){
+                if(!(page+1>pageNum)){
+                    page++;
+                }
+                setBut();
+                flushAnser();
+            };
             nBut.innerHTML="下一页";
             var butPage=document.getElementById("page");
             butPage.innerHTML="";
@@ -269,20 +281,6 @@
             }else if(page+1>pageNum){
                 butPage.appendChild(aBut);
             }
-        }
-        function afterPage(){
-            if(page-1>=0){
-                page--;
-            }
-            setBut();
-            flushAnser();
-        }
-        function nextPage(){
-            if(!(page+1>pageNum)){
-                page++;
-            }
-            setBut();
-            flushAnser();
         }
     </script>
     <button id="pageUd" onclick="afterPage()">

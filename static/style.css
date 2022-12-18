@@ -60,6 +60,11 @@
     clear: both;
     float: left;
 }
+#middle #mbox #anser{
+    background-color: #b40a0a;
+    color: #b40a0a;
+    width: 95%;
+}
 #down{
     text-align: center;
 }

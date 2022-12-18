@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>笔顺码查询-搜索</title>
-    <link rel="stylesheet" href="./static/style.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
     <script src="./static/main.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
@@ -49,6 +48,102 @@
         }
 
     </style>
+    <style>
+
+        *{
+            margin: 0;
+        }
+        #navBar{
+            background-color: #b40a0a;
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        #navBar a{
+            font-size: 18px;
+            color: white;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        #navBar a:link{
+            text-decoration: none;
+            color: white;
+        }
+        #navBar a:visited{
+            color: white;
+        }
+        #navBar span{
+            color: whitesmoke;
+            font-size: 30px;
+            margin-right: 15px;
+            margin-left: 10px;
+        }
+        #middle{
+            width: 100%;
+            height: 1920px;
+            background-color: rgba(211, 140, 27, 0.38);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #middle #mbox{
+            height: 1900px;
+            width: 95%;
+            background-color: white;
+        }
+        #middle #mbox #title{
+            width: 100%;
+            text-align: center;
+            float: left;
+            font-size: 50px;
+            margin-bottom: 40px;
+        }
+        #middle #mbox #title img{
+            margin-top: 7px;
+        }
+        #middle #mbox #title #search{
+            width: 70%;
+            height: 30px;
+            border:10px;
+        }
+        #middle #mbox #words{
+            clear: both;
+            float: left;
+        }
+        #middle #mbox #anser{
+            background-color: #b40a0a;
+            color: #b40a0a;
+            width: 95%;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            /*overflow:hidden*/
+        }
+        #middle #mbox #anser #word{
+            color: black;
+            background-color: pink;
+            float: left;
+            height: 200px;
+            width: 200px;
+            font-size: 140px;
+            padding-left: 30px;
+        }
+        #middle #mbox #anser #bsm{
+            float: right;
+            width: calc(100% - 160px);
+            height: calc(50px);
+            background-color: #0b7dda;
+        }
+        #down{
+            text-align: center;
+        }
+        #down span{
+            padding: 5px;
+        }
+
+    </style>
 </head>
 <body>
 <div id="navBar">
@@ -69,16 +164,23 @@
 </div>
 <div id="middle">
     <div id="mbox">
-            <span id="title">
-
-            </span>
-        <span id="words">
-
-            </span>
+            <div id="anser">
+                <span id="word">
+                    吴
+                </span>
+                <ul>
+                    <li id="bsm">笔顺码：aaaaaa</li>
+                </ul>
+            </div>
     </div>
 </div>
 <div id="down">
-    <span>By Zengtudor Web</span>
+    <span id="powered">加载powered中</span>
+    <script>
+        $.get("./static/poweredBy.html",function (data){
+            document.getElementById("powered").innerHTML=data;
+        });
+    </script>
 </div>
 </body>
 </html>

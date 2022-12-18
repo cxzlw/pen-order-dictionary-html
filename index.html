@@ -77,7 +77,12 @@
     </div>
 </div>
 <div id="down">
-    <span>By Zengtudor Web</span>
+    <span id="powered">加载powered中</span>
+    <script>
+        $.get("./static/poweredBy.html",function (data){
+            document.getElementById("powered").innerHTML=data;
+        });
+    </script>
 </div>
 </body>
 </html>

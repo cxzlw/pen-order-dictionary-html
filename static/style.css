@@ -1,0 +1,58 @@
+
+*{
+    margin: 0;
+}
+#navBar{
+    background-color: cornflowerblue;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+#navBar a{
+    font-size: 18px;
+    color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#navBar a:link{
+    text-decoration: none;
+    color: white;
+}
+#navBar a:visited{
+    color: white;
+}
+#navBar span{
+    color: whitesmoke;
+    font-size: 30px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+#middle{
+    width: 100%;
+    height: 1920px;
+    background-color: rgb(255, 252, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#middle #mbox{
+    height: 1900px;
+    width: 95%;
+    background-color: white;
+}
+#middle #mbox #title{
+    float: left;
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+#middle #mbox #words{
+    clear: both;
+    float: left;
+}
+#down{
+    text-align: center;
+}
+#down span{
+    padding: 5px;
+}

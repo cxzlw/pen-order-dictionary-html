@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>笔顺码查询-首页</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
+    <script src="static/main.js"></script>
 </head>
 <body>
+<div id="navBar">
+    <span>Zengtudor</span>
+    <span id="dir">
+            加载目录中......
+        </span>
+    <script>
+        var changeDir = document.getElementById("dir");
+        $.get("http://"+severMainUrl+"/static/directory.html",function(data){
+            changeDir.innerHTML=data;
+        });
+    </script>
 
+</div>
+<div id="middle">
+    <div id="mbox">
+            <span id="title">
+                Hello world!
+            </span>
+        <span id="words">
+                This is my first web page.
+            </span>
+    </div>
+</div>
+<div id="down">
+    <span>By Zengtudor Web</span>
+</div>
 </body>
 </html>

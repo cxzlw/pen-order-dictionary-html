@@ -1,0 +1,1 @@
+var severMainUrl = "qqazk.zziyu.top";

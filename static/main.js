@@ -1,6 +1,6 @@
 var severMainUrl = "qqazk.zziyu.top";
 
-//å¯¹URLå†…å®¹è§£ææ¯”å¦‚ï¼š$_GET["search"]
+//¶ÔURLÄÚÈİ½âÎö±ÈÈç£º$_GET["search"]
 var $_GET = (function(){
     var url = window.document.location.href.toString();
     var u = url.split("?");

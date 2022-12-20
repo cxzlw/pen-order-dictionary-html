@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-    <title>ç¬”é¡ºç æŸ¥è¯¢-æœç´¢</title>
+    <meta charset="GB18030" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>±ÊË³Âë²éÑ¯-ËÑË÷</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
     <script src="./static/main.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
@@ -13,7 +13,7 @@
         form{
             display: inline;
         }
-        /* è®¾ç½®æœç´¢æ¡† */
+        /* ÉèÖÃËÑË÷¿ò */
         form.example input[type=text] {
             float: right;
             padding: 10px;
@@ -23,7 +23,7 @@
             background: #f1f1f1;
         }
 
-        /* è®¾ç½®æäº¤æŒ‰é’® */
+        /* ÉèÖÃÌá½»°´Å¥ */
         form.example button {
             float: right;
             width: 10%;
@@ -32,7 +32,7 @@
             color: white;
             font-size: 17px;
             border: 1px solid grey;
-            border-left: none; /* é˜²æ­¢åŒè¾¹æ¡† */
+            border-left: none; /* ·ÀÖ¹Ë«±ß¿ò */
             cursor: pointer;
         }
 
@@ -40,7 +40,7 @@
             background: #600000;
         }
 
-        /* æ¸…é™¤æµ®åŠ¨ */
+        /* Çå³ı¸¡¶¯ */
         form.example::after {
             content: "";
             clear: both;
@@ -192,9 +192,9 @@
 </head>
 <body>
 <div id="navBar">
-    <span>ç¬”é¡ºç å­—å…¸</span>
+    <span>±ÊË³Âë×Öµä</span>
     <span id="dir">
-            åŠ è½½ç›®å½•ä¸­......
+            ¼ÓÔØÄ¿Â¼ÖĞ......
     </span>
     <script>
         var changeDir = document.getElementById("dir");
@@ -204,24 +204,24 @@
     </script>
     <form class="example" action="/search.html">
         <button type="submit"><i class="fa fa-search"></i></button>
-        <input id="searchText" type="text" placeholder="ç”¨ç¬”é¡ºç æœç´¢æ±‰å­—" name="search">
+        <input id="searchText" type="text" placeholder="ÓÃ±ÊË³ÂëËÑË÷ºº×Ö" name="search">
     </form>
 </div>
-<div id="jg">ç¬”é¡ºç æœç´¢ç»“æœ,ç‚¹å‡»æ±‰å­—æŸ¥çœ‹æ›´å¤šï¼š</div>
+<div id="jg">±ÊË³ÂëËÑË÷½á¹û,µã»÷ºº×Ö²é¿´¸ü¶à£º</div>
 <div id="middle">
 
     <div id="mbox">
 
         <div id="anser">
                 <span id="word">
-                    <a>åŠ </a>
-                    <a>è½½</a>
-                    <a>ä¸­</a>
+                    <a>¼Ó</a>
+                    <a>ÔØ</a>
+                    <a>ÖĞ</a>
                 </span>
 <!--            <ul>-->
-<!--                <li id="bsm">ç¬”é¡ºç ï¼šåŠ è½½ä¸­</li>-->
-<!--                <li id="py">æ‹¼éŸ³ï¼šåŠ è½½ä¸­</li>-->
-<!--                <li id="js">è§£é‡Šï¼šåŠ è½½ä¸­</li>-->
+<!--                <li id="bsm">±ÊË³Âë£º¼ÓÔØÖĞ</li>-->
+<!--                <li id="py">Æ´Òô£º¼ÓÔØÖĞ</li>-->
+<!--                <li id="js">½âÊÍ£º¼ÓÔØÖĞ</li>-->
 <!--            </ul>-->
         </div>
 
@@ -240,7 +240,7 @@
                     mbox.innerHTML="";
                     if(data.length===0){
                         var NotFound=document.createElement("h1");
-                        NotFound.innerHTML="æ²¡æœ‰æ‰¾åˆ°ç›¸å…³å†…å®¹ï¼";
+                        NotFound.innerHTML="Ã»ÓĞÕÒµ½Ïà¹ØÄÚÈİ£¡";
                         mbox.appendChild(NotFound);
                         return;
                     }
@@ -257,13 +257,13 @@
                         let ul=document.createElement("ul");
                         // let bsm=document.createElement("li");
                         // bsm.id="bsm";
-                        // bsm.innerHTML="æ±‰å­—ç¬”é¡ºç ï¼š"+data[i].bsm;
+                        // bsm.innerHTML="ºº×Ö±ÊË³Âë£º"+data[i].bsm;
                         // let py=document.createElement("li");
                         // py.id="py";
-                        // py.innerHTML="æ±‰å­—æ‹¼éŸ³ï¼š"+data[i].py;
+                        // py.innerHTML="ºº×ÖÆ´Òô£º"+data[i].py;
                         // let js=document.createElement("li");
                         // js.id="js";
-                        // js.innerHTML="æ±‰å­—è§£é‡Šï¼š"+data[i].js;
+                        // js.innerHTML="ºº×Ö½âÊÍ£º"+data[i].js;
                         // ul.appendChild(bsm);
                         // ul.appendChild(py);
                         // ul.appendChild(js);
@@ -292,7 +292,7 @@
 <!--                setBut();-->
 <!--                flushAnser();-->
 <!--            };-->
-<!--            aBut.innerHTML="ä¸Šä¸€é¡µ";-->
+<!--            aBut.innerHTML="ÉÏÒ»Ò³";-->
 <!--            var nBut=document.createElement("button");-->
 <!--            nBut.id="pageUd";-->
 <!--            nBut.onclick=function (){-->
@@ -302,7 +302,7 @@
 <!--                setBut();-->
 <!--                flushAnser();-->
 <!--            };-->
-<!--            nBut.innerHTML="ä¸‹ä¸€é¡µ";-->
+<!--            nBut.innerHTML="ÏÂÒ»Ò³";-->
 <!--            var butPage=document.getElementById("page");-->
 <!--            butPage.innerHTML="";-->
 <!--            NowPage.innerHTML=page+1+"/"+(pageNum+1);-->
@@ -320,14 +320,14 @@
 <!--        }-->
 <!--    </script>-->
 <!--    <button id="pageUd" onclick="afterPage()">-->
-<!--        åŠ è½½ä¸­-->
+<!--        ¼ÓÔØÖĞ-->
 <!--    </button>-->
 <!--    <button id="pageUd" onclick="nextPage()">-->
-<!--        åŠ è½½ä¸­-->
+<!--        ¼ÓÔØÖĞ-->
 <!--    </button>-->
 <!--</div>-->
 <div id="down">
-    <span id="powered">åŠ è½½poweredä¸­</span>
+    <span id="powered">¼ÓÔØpoweredÖĞ</span>
     <script>
         $.get("./static/poweredBy.html",function (data){
             document.getElementById("powered").innerHTML=data;

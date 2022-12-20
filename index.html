@@ -11,6 +11,10 @@
         * {
             box-sizing: border-box;
         }
+        form{
+            display: flex;
+            justify-content: center;
+        }
 
         /* 设置搜索框 */
         form.example input[type=text] {
@@ -18,14 +22,14 @@
             font-size: 17px;
             border: 1px solid grey;
             float: left;
-            width: 80%;
+            width: 60%;
             background: #f1f1f1;
         }
 
         /* 设置提交按钮 */
         form.example button {
             float: left;
-            width: 20%;
+            width: 10%;
             padding: 10px;
             background: #ff5d5d;
             color: white;
@@ -65,11 +69,13 @@
 <div id="middle">
     <div id="mbox">
             <span id="title">
-                <img src="/pv/qqazk.png" alt="title" srcset="" width="97%">
-                <form class="example" action="/search.html">
+                <img src="/pv/qqazk.png" alt="title" srcset="" width="70%">
+                <div id="searchBox">
+                    <form class="example" action="/search.html">
                     <input type="text" placeholder="用笔顺码搜索汉字" name="search">
                      <button type="submit"><i class="fa fa-search"></i></button>
-                </form>
+                    </form>
+                </div>
             </span>
         <span id="words">
 

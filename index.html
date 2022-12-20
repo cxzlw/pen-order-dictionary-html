@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="GB18030" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-    <title>±ÊË³Âë²éÑ¯-Ê×Ò³</title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>ç¬”é¡ºç æŸ¥è¯¢-é¦–é¡µ</title>
     <link rel="stylesheet" href="static/style.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
     <script src="static/main.js"></script>
@@ -19,7 +19,7 @@
             background-color: #f1efcd;
         }
 
-        /* ÉèÖÃËÑË÷¿ò */
+        /* è®¾ç½®æœç´¢æ¡† */
         form.example input[type=text] {
             padding: 10px;
             font-size: 17px;
@@ -29,7 +29,7 @@
             background: #f1f1f1;
         }
 
-        /* ÉèÖÃÌá½»°´Å¥ */
+        /* è®¾ç½®æäº¤æŒ‰é’® */
         form.example button {
             float: left;
             width: 10%;
@@ -38,7 +38,7 @@
             color: white;
             font-size: 17px;
             border: 1px solid grey;
-            border-left: none; /* ·ÀÖ¹Ë«±ß¿ò */
+            border-left: none; /* é˜²æ­¢åŒè¾¹æ¡† */
             cursor: pointer;
         }
 
@@ -46,7 +46,7 @@
             background: #600000;
         }
 
-        /* Çå³ı¸¡¶¯ */
+        /* æ¸…é™¤æµ®åŠ¨ */
         form.example::after {
             content: "";
             clear: both;
@@ -57,9 +57,9 @@
 </head>
 <body>
 <div id="navBar">
-    <span>±ÊË³Âë×Öµä</span>
+    <span>ç¬”é¡ºç å­—å…¸</span>
     <span id="dir">
-            ¼ÓÔØÄ¿Â¼ÖĞ......
+            åŠ è½½ç›®å½•ä¸­......
         </span>
     <script>
         var changeDir = document.getElementById("dir");
@@ -75,7 +75,7 @@
                 <img src="/pv/qqazk.png" alt="title" srcset="" width="70%">
                 <div id="searchBox">
                     <form class="example" action="/search.html">
-                    <input type="text" placeholder="ÓÃ±ÊË³ÂëËÑË÷ºº×Ö" name="search">
+                    <input type="text" placeholder="ç”¨ç¬”é¡ºç æœç´¢æ±‰å­—" name="search">
                      <button type="submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -86,7 +86,7 @@
     </div>
 </div>
 <div id="down">
-    <span id="powered">¼ÓÔØpoweredÖĞ</span>
+    <span id="powered">åŠ è½½poweredä¸­</span>
     <script>
         $.get("./static/poweredBy.html",function (data){
             document.getElementById("powered").innerHTML=data;

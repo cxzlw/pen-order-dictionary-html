@@ -1,7 +1,7 @@
-# ��˳���ֵ�_HTML
+# 笔顺码字典_HTML
 
 #### Description
-��һ������֮������������˾��ı༭���ֵ䡶��˳���ֵ䡷���ϻ�����ҳ�˲��֣�����ѭ���õĿ�Դ����֤��
+将一个由吴之林主编和许多人精心编辑的字典《笔顺码字典》线上化的网页端部分，请遵循设置的开源许可证。
 
 #### Software Architecture
 Software architecture description

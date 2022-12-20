@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="GB18030" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-  <title>±ÊË³Âë²éÑ¯-ËÑË÷</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+  <title>ç¬”é¡ºç æŸ¥è¯¢-æœç´¢</title>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
   <script src="./static/main.js"></script>
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
@@ -13,7 +13,7 @@
     form{
       display: inline;
     }
-    /* ÉèÖÃËÑË÷¿ò */
+    /* è®¾ç½®æœç´¢æ¡† */
     form.example input[type=text] {
       float: right;
       padding: 10px;
@@ -23,7 +23,7 @@
       background: #f1f1f1;
     }
 
-    /* ÉèÖÃÌá½»°´Å¥ */
+    /* è®¾ç½®æäº¤æŒ‰é’® */
     form.example button {
       float: right;
       width: 10%;
@@ -32,7 +32,7 @@
       color: white;
       font-size: 17px;
       border: 1px solid grey;
-      border-left: none; /* ·ÀÖ¹Ë«±ß¿ò */
+      border-left: none; /* é˜²æ­¢åŒè¾¹æ¡† */
       cursor: pointer;
     }
 
@@ -40,7 +40,7 @@
       background: #600000;
     }
 
-    /* Çå³ı¸¡¶¯ */
+    /* æ¸…é™¤æµ®åŠ¨ */
     form.example::after {
       content: "";
       clear: both;
@@ -186,9 +186,9 @@
 </head>
 <body>
 <div id="navBar">
-  <span>±ÊË³Âë×Öµä</span>
+  <span>ç¬”é¡ºç å­—å…¸</span>
   <span id="dir">
-            ¼ÓÔØÄ¿Â¼ÖĞ......
+            åŠ è½½ç›®å½•ä¸­......
     </span>
   <script>
     var changeDir = document.getElementById("dir");
@@ -198,41 +198,41 @@
   </script>
   <form class="example" action="/search.html">
     <button type="submit"><i class="fa fa-search"></i></button>
-    <input id="searchText" type="text" placeholder="ÓÃ±ÊË³ÂëËÑË÷ºº×Ö" name="search">
+    <input id="searchText" type="text" placeholder="ç”¨ç¬”é¡ºç æœç´¢æ±‰å­—" name="search">
   </form>
 </div>
 <div id="middle">
   <div id="mbox">
 
       <div id="word">
-        şe
+        åŠ 
       </div>
       <div id="anser">
         <div>
-          <div id="bsm">±ÊË³Âë£º¼ÓÔØÖĞ</div>
-          <div id="py">Æ´Òô£º¼ÓÔØÖĞ</div>
+          <div id="bsm">ç¬”é¡ºç ï¼šåŠ è½½ä¸­</div>
+          <div id="py">æ‹¼éŸ³ï¼šåŠ è½½ä¸­</div>
         </div>
         <div id="js">
-          ½âÊÍ¼ÓÔØÖĞ
+          è§£é‡ŠåŠ è½½ä¸­
         </div>
       </div>
 
     <script>
       $.get("http://"+window.location.hostname+":8080/hz",{"bh":$_GET["bh"]},function (data){
           console.log(data);
-          data = JSON.parse(data);
+          // data = JSON.parse(data);
           console.log(data);
           document.getElementById("word").innerHTML = data.hz[0];
-          document.getElementById("bsm").innerHTML = "±ÊË³Âë£º"+data.bsm;
-          document.getElementById("py").innerHTML = "Æ´Òô£º"+data.py;
-          document.getElementById("js").innerHTML = "½âÊÍ£º"+data.js;
+          document.getElementById("bsm").innerHTML = "ç¬”é¡ºç ï¼š"+data.bsm;
+          document.getElementById("py").innerHTML = "æ‹¼éŸ³ï¼š"+data.py;
+          document.getElementById("js").innerHTML = "è§£é‡Šï¼š"+data.js;
       });
     </script>
   </div>
 </div>
 
 <div id="down">
-  <span id="powered">¼ÓÔØpoweredÖĞ</span>
+  <span id="powered">åŠ è½½poweredä¸­</span>
   <script>
     $.get("./static/poweredBy.html",function (data){
       document.getElementById("powered").innerHTML=data;

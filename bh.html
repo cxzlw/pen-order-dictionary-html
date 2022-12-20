@@ -91,16 +91,20 @@
       margin-bottom: 30px;
     }
     #middle #mbox{
-      display: flex;
-      justify-content: center;
+      /*display: flex;*/
+      /*justify-content: center;*/
       /*height: 1900px;*/
       min-height: 700px;
       width: 95%;
       background-color: white;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
     }
     #middle #mbox #title{
       width: 100%;
-      text-align: center;
+      /*text-align: center;*/
       float: left;
       font-size: 50px;
       margin-bottom: 40px;
@@ -118,17 +122,18 @@
       float: left;
     }
     #middle #mbox #anser{
-      float: left;
+      /*float: left;*/
       /*background-color: #b40a0a;*/
       /*color: #b40a0a;*/
-      width: 500px;
-      height: 200px;
+      /*width: 500px;*/
+      /*height: 200px;*/
       margin-left: auto;
       margin-right: auto;
       margin-top: 10px;
+      /*min-width: 100px;*/
       /*overflow:hidden*/
     }
-    #middle #mbox #anser #word{
+    #middle #mbox  #word{
       color: black;
       background-color:white;
       float: left;
@@ -141,11 +146,11 @@
       color: black;
       text-decoration: none;
     }
-    #middle #mbox #anser ul{
+    #middle #mbox #anser {
       color: black;
       list-style-type: none;
     }
-    #middle #mbox #anser ul li{
+    #middle #mbox #anser  li{
       float: right;
       background-color: white;
       padding-left: 20px;
@@ -198,16 +203,19 @@
 </div>
 <div id="middle">
   <div id="mbox">
-    <div id="anser">
-      <span id="word">
+
+      <div id="word">
         加
-      </span>
-      <ul>
-        <li id="bsm">笔顺码：加载中</li>
-        <li id="py">拼音：加载中</li>
-        <li id="js">解释：加载中</li>
-      </ul>
-    </div>
+      </div>
+      <div id="anser">
+        <div>
+          <div id="bsm">笔顺码：加载中</div>
+          <div id="py">拼音：加载中</div>
+        </div>
+        <div id="js">
+          解释加载中
+        </div>
+      </div>
 
     <script>
       $.get("http://"+window.location.hostname+":8080/hz",{"bh":$_GET["bh"]},function (data){

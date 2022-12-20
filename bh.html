@@ -220,7 +220,7 @@
     <script>
       $.get("http://"+window.location.hostname+":8080/hz",{"bh":$_GET["bh"]},function (data){
           console.log(data);
-          // data = JSON.parse(data);
+          data = JSON.parse(data);
           console.log(data);
           document.getElementById("word").innerHTML = data.hz[0];
           document.getElementById("bsm").innerHTML = "±ÊË³Âë£º"+data.bsm;

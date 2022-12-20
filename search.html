@@ -49,7 +49,12 @@
 
     </style>
     <style>
-
+        html{
+            height: 100%;
+        }
+        body{
+            background-color: #f1efcd;
+        }
         *{
             margin: 0;
         }
@@ -82,13 +87,14 @@
         #middle{
             width: 100%;
             /*height: 1920px;*/
-            background-color: rgba(211, 140, 27, 0.38);
+            /*background-color: rgba(211, 140, 27, 0.38);*/
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 30px;
         }
         #middle #mbox{
+            min-height: 900px;
             /*height: 1900px;*/
             width: 95%;
             background-color: white;
@@ -116,8 +122,8 @@
             float: left;
             /*background-color: #b40a0a;*/
             /*color: #b40a0a;*/
-            width: 500px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 10px;
@@ -127,10 +133,10 @@
             color: black;
             background-color:white;
             float: left;
-            height: 200px;
-            width: 200px;
-            font-size: 140px;
-            padding-left: 30px;
+            height: 100px;
+            width: 100px;
+            font-size: 70px;
+            padding-left: 10px;
         }
         #middle #mbox #anser #word a{
             color: black;
@@ -162,15 +168,25 @@
         #down{
             text-align: center;
         }
-        #down span{
-            padding: 5px;
-        }
         #page{
             text-align: center;
         }
         #page #pageUd{
             background-color: #b40a0a;
             color: white;
+        }
+        #jg{
+            background-color: white;
+            /*display: flex;*/
+            /*justify-content: center;*/
+            font-size: 20px;
+            width: 95%;
+            margin-left: calc(2.5%);
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #down{
+            background-color: white;
         }
     </style>
 </head>
@@ -191,18 +207,21 @@
         <input id="searchText" type="text" placeholder="用笔顺码搜索汉字" name="search">
     </form>
 </div>
+<div id="jg">笔顺码搜索结果,点击汉字查看更多：</div>
 <div id="middle">
+
     <div id="mbox">
-            <div id="anser">
+
+        <div id="anser">
                 <span id="word">
-                    <a href="/word.html?id=1">加</a>
+                    <a>加</a>
                 </span>
-                <ul>
-                    <li id="bsm">笔顺码：加载中</li>
-                    <li id="py">拼音：加载中</li>
-                    <li id="js">解释：加载中</li>
-                </ul>
-            </div>
+<!--            <ul>-->
+<!--                <li id="bsm">笔顺码：加载中</li>-->
+<!--                <li id="py">拼音：加载中</li>-->
+<!--                <li id="js">解释：加载中</li>-->
+<!--            </ul>-->
+        </div>
 
         <script>
             document.getElementById("searchText").value=$_GET["search"];
@@ -211,10 +230,10 @@
             function flushAnser(){
                 $.get("http://"+window.location.hostname+":8080/search/bsm",{"search":$_GET["search"],"page":page},(Rawdata)=>{
                     console.log(Rawdata);
-                    Rawdata=JSON.parse(Rawdata);
-                    pageNum=Rawdata.page;
+                    const data=JSON.parse(Rawdata);
+                    // pageNum=Rawdata.page;
                     // console.log(Rawdata.page);
-                    const data=Rawdata.data;
+                    // const data=Rawdata.data;
                     const mbox = document.getElementById("mbox");
                     mbox.innerHTML="";
                     if(data.length===0){
@@ -228,26 +247,28 @@
                         anser.id="anser";
                         let a=document.createElement("a");
                         a.innerHTML=data[i].hz[0];
+                        a.href="http://"+window.location.hostname+"/hz.html?bh="+data[i].bh;
+                        a.target="_blank";
                         let word = document.createElement("span");
                         word.id="word";
                         word.appendChild(a);
                         let ul=document.createElement("ul");
-                        let bsm=document.createElement("li");
-                        bsm.id="bsm";
-                        bsm.innerHTML="汉字笔顺码："+data[i].bsm;
-                        let py=document.createElement("li");
-                        py.id="py";
-                        py.innerHTML="汉字拼音："+data[i].py;
-                        let js=document.createElement("li");
-                        js.id="js";
-                        js.innerHTML="汉字解释："+data[i].js;
-                        ul.appendChild(bsm);
-                        ul.appendChild(py);
-                        ul.appendChild(js);
+                        // let bsm=document.createElement("li");
+                        // bsm.id="bsm";
+                        // bsm.innerHTML="汉字笔顺码："+data[i].bsm;
+                        // let py=document.createElement("li");
+                        // py.id="py";
+                        // py.innerHTML="汉字拼音："+data[i].py;
+                        // let js=document.createElement("li");
+                        // js.id="js";
+                        // js.innerHTML="汉字解释："+data[i].js;
+                        // ul.appendChild(bsm);
+                        // ul.appendChild(py);
+                        // ul.appendChild(js);
                         anser.appendChild(word);
                         anser.appendChild(ul);
                         mbox.appendChild(anser);
-                        setBut();
+                        // setBut();
                     }
                 });
                 scroll(0,0);
@@ -256,53 +277,53 @@
         </script>
     </div>
 </div>
-<div id="page">
-    <script>
-        function setBut(){
-            var NowPage=document.createElement("span");
-            var aBut=document.createElement("button");
-            aBut.id="pageUd";
-            aBut.onclick=function (){
-                if(page-1>=0){
-                    page--;
-                }
-                setBut();
-                flushAnser();
-            };
-            aBut.innerHTML="上一页";
-            var nBut=document.createElement("button");
-            nBut.id="pageUd";
-            nBut.onclick=function (){
-                if(!(page+1>pageNum)){
-                    page++;
-                }
-                setBut();
-                flushAnser();
-            };
-            nBut.innerHTML="下一页";
-            var butPage=document.getElementById("page");
-            butPage.innerHTML="";
-            NowPage.innerHTML=page+1+"/"+(pageNum+1);
-            if (page!=0&&page+1<=pageNum){
-                butPage.appendChild(aBut);
-                butPage.appendChild(NowPage);
-                butPage.appendChild(nBut);
-            } else if(page==0){
-                butPage.appendChild(NowPage);
-                butPage.appendChild(nBut);
-            }else if(page+1>pageNum){
-                butPage.appendChild(aBut);
-                butPage.appendChild(NowPage);
-            }
-        }
-    </script>
-    <button id="pageUd" onclick="afterPage()">
-        加载中
-    </button>
-    <button id="pageUd" onclick="nextPage()">
-        加载中
-    </button>
-</div>
+<!--<div id="page">-->
+<!--    <script>-->
+<!--        function setBut(){-->
+<!--            var NowPage=document.createElement("span");-->
+<!--            var aBut=document.createElement("button");-->
+<!--            aBut.id="pageUd";-->
+<!--            aBut.onclick=function (){-->
+<!--                if(page-1>=0){-->
+<!--                    page&#45;&#45;;-->
+<!--                }-->
+<!--                setBut();-->
+<!--                flushAnser();-->
+<!--            };-->
+<!--            aBut.innerHTML="上一页";-->
+<!--            var nBut=document.createElement("button");-->
+<!--            nBut.id="pageUd";-->
+<!--            nBut.onclick=function (){-->
+<!--                if(!(page+1>pageNum)){-->
+<!--                    page++;-->
+<!--                }-->
+<!--                setBut();-->
+<!--                flushAnser();-->
+<!--            };-->
+<!--            nBut.innerHTML="下一页";-->
+<!--            var butPage=document.getElementById("page");-->
+<!--            butPage.innerHTML="";-->
+<!--            NowPage.innerHTML=page+1+"/"+(pageNum+1);-->
+<!--            if (page!=0&&page+1<=pageNum){-->
+<!--                butPage.appendChild(aBut);-->
+<!--                butPage.appendChild(NowPage);-->
+<!--                butPage.appendChild(nBut);-->
+<!--            } else if(page==0){-->
+<!--                butPage.appendChild(NowPage);-->
+<!--                butPage.appendChild(nBut);-->
+<!--            }else if(page+1>pageNum){-->
+<!--                butPage.appendChild(aBut);-->
+<!--                butPage.appendChild(NowPage);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--    <button id="pageUd" onclick="afterPage()">-->
+<!--        加载中-->
+<!--    </button>-->
+<!--    <button id="pageUd" onclick="nextPage()">-->
+<!--        加载中-->
+<!--    </button>-->
+<!--</div>-->
 <div id="down">
     <span id="powered">加载powered中</span>
     <script>

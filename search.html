@@ -208,15 +208,15 @@
             var page=0;
             var pageNum=0;
             function flushAnser(){
-                $.get("http://qqazk.zziyu.top:8080/search/bsm",{"search":$_GET["search"],"page":page},(Rawdata)=>{
-                    // console.log(Rawdata);
+                $.get("http://"+window.location.hostname+":8080/search/bsm",{"search":$_GET["search"],"page":page},(Rawdata)=>{
+                    console.log(Rawdata);
                     Rawdata=JSON.parse(Rawdata);
                     pageNum=Rawdata.page;
                     // console.log(Rawdata.page);
                     const data=Rawdata.data;
                     const mbox = document.getElementById("mbox");
                     mbox.innerHTML="";
-                    if(pageNum==0){
+                    if(data.length===0){
                         var NotFound=document.createElement("h1");
                         NotFound.innerHTML="没有找到相关内容！";
                         mbox.appendChild(NotFound);

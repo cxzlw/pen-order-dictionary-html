@@ -231,8 +231,8 @@
             var pageNum=0;
             function flushAnser(){
                 $.get("http://"+window.location.hostname+":8080/search/bsm",{"search":$_GET["search"],"page":page},(Rawdata)=>{
-                    console.log(Rawdata);
-                    const data=JSON.parse(Rawdata);
+                    //console.log(Rawdata);
+                    /*const data=JSON.parse(Rawdata);*/
                     // pageNum=Rawdata.page;
                     // console.log(Rawdata.page);
                     // const data=Rawdata.data;

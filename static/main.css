@@ -1,0 +1,18 @@
+.learnAnser #tell{
+    margin-top: 10px;
+    font-size: larger;
+}
+.learnAnser .bsm ul{
+    margin-top: 10px;
+    list-style: none;
+    font-size: larger;
+}
+.learnAnser .buttons{
+    margin-top: 10px;
+}
+.learnAnser .buttons button{
+    font-size: 100px;
+}
+.learnAnser #server{
+    font-size: 30px;
+}

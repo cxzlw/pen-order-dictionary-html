@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>笔顺码查询-搜索</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.2/jquery.js"></script>
+  <script src="./static/main.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="/static/main.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    form {
+      display: inline;
+    }
+
+    /* 设置搜索框 */
+    form.example input[type=text] {
+      float: right;
+      padding: 10px;
+      font-size: 17px;
+      border: 1px solid grey;
+      width: 30%;
+      background: #f1f1f1;
+    }
+
+    /* 设置提交按钮 */
+    form.example button {
+      float: right;
+      width: 10%;
+      padding: 10px;
+      background: #ff5d5d;
+      color: white;
+      font-size: 17px;
+      border: 1px solid grey;
+      border-left: none;
+      /* 防止双边框 */
+      cursor: pointer;
+    }
+
+    form.example button:hover {
+      background: #600000;
+    }
+
+    /* 清除浮动 */
+    form.example::after {
+      content: "";
+
+      clear: both;
+      display: table;
+    }
+  </style>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    #navBar {
+      background-color: #b40a0a;
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+    }
+
+    #navBar a {
+      font-size: 18px;
+      color: white;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+
+    #navBar a:link {
+      text-decoration: none;
+      color: white;
+    }
+
+    #navBar a:visited {
+      color: white;
+    }
+
+    #navBar span {
+      color: whitesmoke;
+      font-size: 30px;
+      margin-right: 15px;
+      margin-left: 10px;
+    }
+
+    #middle {
+
+      width: 100%;
+      /*height: 1920px;*/
+      /*background-color: rgba(211, 140, 27, 0.38);*/
+      display: flex;
+      background-color: #f1efcd;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    #middle #mbox {
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*height: 1900px;*/
+      min-height: 700px;
+      width: 95%;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    #middle #mbox #title {
+      width: 100%;
+      /*text-align: center;*/
+      float: left;
+      font-size: 50px;
+      margin-bottom: 40px;
+    }
+
+    #middle #mbox #title img {
+      margin-top: 7px;
+    }
+
+    #middle #mbox #title #search {
+      width: 70%;
+      height: 30px;
+      border: 10px;
+    }
+
+    #middle #mbox #words {
+      clear: both;
+      float: left;
+    }
+
+    #middle #mbox #anser {
+      /*float: left;*/
+      /*background-color: #b40a0a;*/
+      /*color: #b40a0a;*/
+      /*width: 500px;*/
+      /*height: 200px;*/
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      /*min-width: 100px;*/
+      /*overflow:hidden*/
+    }
+
+    #middle #mbox #word {
+      color: black;
+      background-color: white;
+      float: left;
+      height: 200px;
+      width: 200px;
+      font-size: 140px;
+      padding-left: 30px;
+    }
+
+    #middle #mbox #anser #word a {
+      color: black;
+      text-decoration: none;
+    }
+
+    #middle #mbox #anser {
+      color: black;
+      list-style-type: none;
+    }
+
+    #middle #mbox #anser li {
+      float: right;
+      background-color: white;
+      padding-left: 20px;
+      width: calc(100% - 160px);
+    }
+
+    #middle #mbox #anser #hz {
+      overflow: hidden;
+    }
+
+    #middle #mbox #anser #bsm {
+      height: calc(25px);
+    }
+
+    #middle #mbox #anser #py {
+      height: calc(25px);
+    }
+
+    #middle #mbox #anser #js {
+      height: calc(150px);
+      overflow: auto;
+    }
+
+    #down {
+      text-align: center;
+    }
+
+    #down span {
+      padding: 5px;
+    }
+
+    #page {
+      text-align: center;
+    }
+
+    #page #pageUd {
+      background-color: #b40a0a;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navBar">
+    <span>笔顺码字典</span>
+    <span id="dir">
+      加载目录中......
+    </span>
+    <script>
+      var changeDir = document.getElementById("dir");
+      $.get("/static/directory.html", function (data) {
+        changeDir.innerHTML = data;
+      });
+    </script>
+    <form class="example" action="/search.html">
+      <button type="submit"><i class="fa fa-search"></i></button>
+      <input id="searchText" type="text" placeholder="用笔顺码搜索汉字" name="search">
+    </form>
+  </div>
+  <div id="middle">
+    <div id="mbox">
+        <div class="learnAnser">
+            <div id="tell">笔顺码是直接和笔画相对应的字母编码。下面是一个小练习</div>
+            <div id="tell">根据给出的笔顺码和它的翻译选择相对应的汉字：</div>
+            <div class="bsm">
+                <ul>
+                    <li id="raw">笔顺码:</li>
+                    <li id="tran">笔顺码翻译:</li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button id=0 onclick="learnOK(this)"></button>
+                <button id=1 onclick="learnOK(this)"></button>
+                <button id=2 onclick="learnOK(this)"></button>
+                <button id=3 onclick="learnOK(this)"></button>
+            </div>
+            <div id="server">
+                状态:未选择
+            </div>
+            <script>
+                var leanDa={};
+                function reload(){
+                    $.get("http://"+window.location.hostname+":8080/learn",{},(data)=>{
+                        leanDa = data;
+                        document.getElementById("raw").innerHTML = leanDa.bsm;
+                        $.get("http://"+window.location.hostname+":8080/fybsm",{"bsm":leanDa.bsm},(data)=>{
+                            document.getElementById("tran").innerHTML = "翻译:" + data;
+                        });
+                        for(let i=0;i<4;i++){
+                            document.getElementById(i).innerHTML = leanDa.sj[i];
+                        }
+                    });
+                }
+                reload();
+                let _server = document.getElementById("server");
+                function server(sayStr){
+                    _server.innerHTML = "状态:"+sayStr;
+                }
+                function learnOK(place){
+                    if(place.id==leanDa.id){
+                        _server.style.color = "green";
+                        server("你上题答对了！下一题！");
+                        reload();
+                    }else{
+                        _server.style.color = "red";
+                        server("你答错了，再试试！");
+                    }
+                }
+            </script>
+        </div>
+    </div>
+  </div>
+
+  <div id="down">
+    <span id="powered">加载powered中</span>
+    <script>
+      $.get("./static/poweredBy.html", function (data) {
+        document.getElementById("powered").innerHTML = data;
+      });
+    </script>
+  </div>
+</body>
+
+</html>

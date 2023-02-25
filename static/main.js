@@ -1,4 +1,5 @@
-var severMainUrl = "qqazk.zziyu.top";
+// var severMainUrl = "qqazk.zziyu.top";
+var severMainUrl = "localhost";
 
 //对URL内容解析比如：$_GET["search"]
 var $_GET = (function(){
